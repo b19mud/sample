@@ -17,12 +17,19 @@ $navbar-color: #3c3e42;
 
 body {
   padding-top: 60px;
+  width: 100%;
+  min-width: 1200px;
 }
 
 section {
   overflow: auto;
 }
 
+@media screen and (max-width: 800px) {
+  .container-fluid{
+    margin-top: 150px;
+  }
+}
 textarea {
   resize: vertical;
 }
@@ -201,3 +208,4 @@ input {
   position: relative;
   right: 0;
 }
+

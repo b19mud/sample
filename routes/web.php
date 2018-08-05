@@ -22,6 +22,9 @@ Route::get('signup','UsersController@create')->name('signup');
 
 Route::resource('users','UsersController');
 
+Route::get('add_camera','CameraController@create')->name('add_camera');
+Route::resource('cameras','CameraController');
+
 
 Route::get('login','SessionsController@create')->name('login');
 Route::post('login','SessionsController@store')->name('login');
