@@ -19,7 +19,7 @@
 	padding: 3px 5px;
 	box-sizing: border-box;
 	background: #3c3e42;
-	color: #fff;
+	color: #3c3e42;
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-top: 5px;">

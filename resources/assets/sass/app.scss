@@ -25,11 +25,6 @@ section {
   overflow: auto;
 }
 
-@media screen and (max-width: 800px) {
-  .container-fluid{
-    margin-top: 150px;
-  }
-}
 textarea {
   resize: vertical;
 }

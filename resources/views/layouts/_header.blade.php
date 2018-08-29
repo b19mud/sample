@@ -5,6 +5,7 @@
       <nav>
         <ul class="nav navbar-nav navbar-right">
           @if (Auth::check())
+            <li><a href="{{ route('allcamera.index')}}">全部摄像头</a></li>
             <li><a href="{{ route('cameras.index')}}">摄像头列表</a></li>
             <li><a href="{{ route('users.index') }}">用户列表</a></li>
             <li class="dropdown">
