@@ -3,6 +3,8 @@
   <head>
     <title>@yield('title', 'Sample App') - Laravel 入门教程</title>
     <link rel="stylesheet" href="/css/app.css">
+    <script type="text/javascript" src="/js/HPlayer/js/jquery172.js"></script>
+<script type="text/javascript" src="/js/HPlayer/js/action.js"></script>
   </head>
   <style type="text/css">
     @media screen and (max-width: 800px) {
