@@ -22,6 +22,7 @@
             <li><a href="{{ route('allcamera.index')}}">全部摄像头</a></li>
             <li><a href="{{ route('cameras.index')}}">摄像头列表</a></li>
             <li><a href="{{ route('users.index') }}">用户列表</a></li>
+            <li><a href="/playback">视频回放</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 {{ Auth::user()->name }} <b class="caret"></b>
@@ -52,7 +53,7 @@
 </header>
 <div class="video_list" style="width: 100%;height: auto;display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;
 justify-content: space-around;">
-	<div style="width: 30%;
+	<!--<div style="width: 30%;
             height: 200px;">
             <div id="CuPlayer" >
                 <SCRIPT LANGUAGE=JavaScript>        
@@ -70,68 +71,12 @@ justify-content: space-around;">
                 </SCRIPT> 
             <script class="CuPlayerVideo" data-mce-role="CuPlayerVideo" type="text/javascript"  src="js/HPlayer/js/CuSunHLSX2.min.js"></script>
             </div>
+  </div>-->
+  @foreach ($cameras as $camera)
+  <div style="width: 30%;height: 200px;">
+  <object id="CuPlayerVideo_video_object" width="100%" height="200px" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param name="movie" value="js/HPlayer/player.swf?v=2.5"><param name="flashvars" value="JcScpFile=js/HPlayer/CuSunV2setLive.xml&amp;JcScpVideoPath=&amp;JcScpImg=js/HPlayer/images/start.jpg&amp;JcScpServer={{$camera->ip_address}}"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="wmode" value="Transparent"><embed id="CuPlayerVideo_video_embed" src="js/HPlayer/player.swf?v=2.5" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="Transparent" width="100%" height="200px" flashvars="JcScpFile=js/HPlayer/CuSunV2setLive.xml&amp;JcScpVideoPath=&amp;JcScpImg=js/HPlayer/images/start.jpg&amp;JcScpServer={{$camera->ip_address}}"></object>
   </div>
-	<div style="background-color:#5CB85C;width: 30%;
-            height: 200px;">
-            <div id="CuPlayer" >
-                <SCRIPT LANGUAGE=JavaScript>        
-                    var vID        = ""; 
-                    var vWidth     = "100%";
-                    var vHeight    = "200px";
-                    var vFile      = "js/HPlayer/CuSunV2setLive.xml";
-                    var vPlayer    = "js/HPlayer/player.swf?v=2.5";
-                    var vPic       = "js/HPlayer/images/start.jpg";
-                    var vCssurl    = "js/HPlayer/images/mini.css";
-
-                    //PC端
-                    var vServer    = "rtmp://120.78.157.220/videotest";
-                    var vMp4url    = "";  
-                </SCRIPT> 
-            <script class="CuPlayerVideo" data-mce-role="CuPlayerVideo" type="text/javascript"  src="js/HPlayer/js/CuSunHLSX2.min.js"></script>
-            </div>
-            </div>
-	<div style="background-color:#F0AD4E;width: 30%;
-            height: 200px;">
-            	<video style="width: 94%;height: 190px;margin: 5px 3%;" autoplay="autoplay">
-            		<source src="#" type="video/mp4">
-            	</video>
-            </div>
-	<div style="background-color:#FFC706;width: 30%;
-            height: 200px;">
-            	<video style="width: 94%;height: 190px;margin: 5px 3%;" autoplay="autoplay">
-            		<source src="#" type="video/mp4">
-            	</video>
-            </div>
-    <div style="background-color:#5BC0DE;width: 30%;
-            height: 200px;">
-            	<video style="width: 94%;height: 190px;margin: 5px 3%;" autoplay="autoplay">
-            		<source src="#" type="video/mp4">
-            	</video>
-            </div>
-	<div style="background-color:#5CB85C;width: 30%;
-            height: 200px;">
-            	<video style="width: 94%;height: 190px;margin: 5px 3%;" autoplay="autoplay">
-            		<source src="#" type="video/mp4">
-            	source</video>
-            </div>
-	<div style="background-color:#F0AD4E;width: 30%;
-            height: 200px;">
-            	<video style="width: 94%;height: 190px;margin: 5px 3%;" autoplay="autoplay">
-            		<source src="#" type="video/mp4">
-            	</video>
-            </div>
-	<div style="background-color:#FFC706;width: 30%;
-            height: 200px;">
-            	<video style="width: 94%;height: 190px;margin: 5px 3%;" autoplay="autoplay">
-            		<source src="#" type="video/mp4">
-            	</video>
-            </div>
-    <div style="background-color:#FFC706;width: 30%;
-            height: 200px;">
-            	<video style="width: 94%;height: 190px;margin: 5px 3%;" autoplay="autoplay">
-            		<source src="#" type="video/mp4">
-            	</video>
-            </div>        
+@endforeach 
 </div>
 </body>
 </html>

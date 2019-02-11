@@ -12,7 +12,7 @@
     </div>
   </div>
 </div>
-<div style="background: #3c3e42;padding: 20px;margin-bottom: 120px;">
+<div style="background: #3c3e42;padding: 20px;margin-bottom: 80px;">
 	<div style="background:#fff;display: inline-block;height: 560px; width: 75%">
 	<div id="CuPlayer" >
                 <SCRIPT LANGUAGE=JavaScript>        
@@ -25,7 +25,7 @@
                     var vCssurl    = "/js/HPlayer/images/mini.css";
 
                     //PC端
-                    var vServer    = "rtmp://120.78.157.220/videotest";
+                    var vServer    = "{{$camera->ip_address}}";
                     var vMp4url    = "";  
                 </SCRIPT> 
             <script class="CuPlayerVideo" data-mce-role="CuPlayerVideo" type="text/javascript"  src="/js/HPlayer/js/CuSunHLSX2.min.js"></script>
@@ -33,7 +33,26 @@
 	</div>
 	<div style="display: inline-block;float:right;height: 560px;background: #cdd7d8; width: 20%">
 		55555
-	</div>
+  </div>
+	<div style="display: inline-block;width: 75%">
+  <div>
+  <button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 14
+  </button>
+  
+  <button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 14
+  </button>
+
+  <button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 14
+  </button>
+
+  <button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 14
+  </button>
+
+  </div>
 </div>
 
 @stop

@@ -8,6 +8,7 @@
             <li><a href="{{ route('allcamera.index')}}">全部摄像头</a></li>
             <li><a href="{{ route('cameras.index')}}">摄像头列表</a></li>
             <li><a href="{{ route('users.index') }}">用户列表</a></li>
+            <li><a href="/playback">视频回放</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 {{ Auth::user()->name }} <b class="caret"></b>

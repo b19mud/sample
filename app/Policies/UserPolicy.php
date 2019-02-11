@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Models\Camera;
 
 class UserPolicy
 {
@@ -27,5 +28,10 @@ class UserPolicy
     public function destroy(User $currentUser, User $user)
     {
         return $currentUser->is_admin && $currentUser->id !== $user->id;
+    }
+
+    public function destroy_camera(User $currentUser, Camera $camera)
+    {
+        return TRUE;
     }
 }

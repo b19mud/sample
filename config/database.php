@@ -50,7 +50,22 @@ return [
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
-            'strict' => true,
+            'strict' => false,
+            'engine' => null,
+        ],
+
+        'remote_mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST_REMOTE', '120.78.157.220'),
+            'port' => env('DB_PORT_REMOTE', '3306'),
+            'database' => env('DB_DATABASE_REMOTE', 'forge'),
+            'username' => env('DB_USERNAME_REMOTE', 'forge'),
+            'password' => env('DB_PASSWORD_REMOTE', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
             'engine' => null,
         ],
 

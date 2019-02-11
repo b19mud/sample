@@ -17,6 +17,6 @@ class AllcameraController extends Controller
     {
     	$cameras = Camera::all();
 
-    	return view('allcamera.index',compact('Camera'));
+    	return view('allcamera.index',compact('cameras'));
     }
 }
