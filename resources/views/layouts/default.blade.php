@@ -3,8 +3,11 @@
   <head>
     <title>@yield('title', 'Sample App')</title>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
     <script type="text/javascript" src="/js/HPlayer/js/jquery172.js"></script>
 <script type="text/javascript" src="/js/HPlayer/js/action.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
   <style type="text/css">

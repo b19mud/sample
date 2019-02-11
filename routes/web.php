@@ -36,3 +36,4 @@ Route::get('/test', function () {
 
 Route::get('/playback', 'PlayBackController@index');
 Route::post('/download', 'PlayBackController@download_file');
+Route::post('/play','PlayBackController@playback');

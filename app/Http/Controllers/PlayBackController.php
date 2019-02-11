@@ -3,18 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Camera;
+use Illuminate\Support\Facades\DB;
 
 class PlayBackController extends Controller
 {
     public function index()
     {
-        return view('playback.index');
+        $cameras = Camera::all();
+        return view('playback.index',[
+            'cameras'=>$cameras
+            ]);
     }
 
     public function playback(Request $request)
     {
         //应该有几个请求参数？
         //$request->name  $request->ip_address 需要拼接文件名　数据库  id  文件名　　表名为目录名也为摄像头名
+        $tag = $request->tag ;
+        $url = $request->video_url ;
+        $base_path = 'http://120.78.157.220/';
+        return $base_path.$tag.$url;
     }
 
     public function download_file(Request $request)
@@ -55,4 +64,5 @@ class PlayBackController extends Controller
 
         return 1;
     }
+
 }

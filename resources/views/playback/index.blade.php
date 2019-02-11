@@ -15,39 +15,48 @@
 <div style="background: #3c3e42;padding: 20px;margin-bottom: 80px;">
 	<div style="background:#fff;display: inline-block;height: 560px; width: 80%">
 	<div id="CuPlayer" >
-                <SCRIPT LANGUAGE=JavaScript>        
-                    var vID        = ""; 
-                    var vWidth     = "100%";
-                    var vHeight    = "560px";
-                    var vFile      = "/js/HPlayer/CuSunV2setLive.xml";
-                    var vPlayer    = "/js/HPlayer/player.swf?v=2.5";
-                    var vPic       = "/js/HPlayer/images/start.jpg";
-                    var vCssurl    = "/js/HPlayer/images/mini.css";
-
-                    //PC端
-                    var vServer    = "";
-                    var vMp4url    = "";  
-                </SCRIPT> 
-            <script class="CuPlayerVideo" data-mce-role="CuPlayerVideo" type="text/javascript"  src="/js/HPlayer/js/CuSunHLSX2.min.js"></script>
-            </div>
+                
+</div>
 	</div>
 <div style="display: inline-block;float:right;height: 560px;background: #cdd7d8; width: 20%">
   <div class="form-group">
       <label>选择摄像头</label>
       <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+        @foreach($cameras as $camera)
+        <option>{{$camera->name}}</option>
+        @endforeach
         </select>
   </div>
+  <div>
+  <label>日期：</label>
+      <div class='input-group date form_datetime'>
+          <input type='text' class="form-control" />
+          <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+      </div>
+  </div>
+
+  <div>
+  <label>文件列表：</label>
+  <div class="list-group pre-scrollable" style="width:100%; height:220px; overflow:auto">
+    @foreach()
+    <button type="button" class="list-group-item">{{}}</button>
+    @endforeach
+
+  </div>
+  </div>
+
 <div>
-  文件列表
+          <form id="play_form">
+          {{ csrf_field() }}
+          <input type="text" name="url">
+          <button type="button" class="btn btn-default btn-sm" name="download_button" onclick="play()">
+          <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>播放
+          </button>
+          </form>
 </div>
-<div>
-  播放
-</div>
+
   <div>
           <form id="download_form">
           {{ csrf_field() }}
@@ -84,13 +93,24 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-
+$(".form_datetime").datetimepicker({
+    format: "yyyy-mm-dd",
+    autoclose: true,
+    todayBtn: true,
+    pickerPosition: "bottom-left",
+    minView: 2
+});
 //$('button[name="download_button"]').click( function() {
 //    $.post('/download',$("#download_form").serialize());
 //});
 function download()
 {
   $.post('/download',$("#download_form").serialize());
+}
+function play()
+{
+  $.post('/play',$("#play_form").serialize(),function(data){$("#CuPlayer").append("<SCRIPT LANGUAGE=JavaScript>        var vID        = ""; var vWidth     = "100%";var vHeight    = "560px";var vFile      = "/js/HPlayer/CuSunV2setLive.xml";var vPlayer    = "/js/HPlayer/player.swf?v=2.5";var vPic       = "/js/HPlayer/images/start.jpg";var vCssurl    = "/js/HPlayer/images/mini.css";var vServer    = data;var vMp4url    = "";  </SCRIPT> <script class="CuPlayerVideo" data-mce-role="CuPlayerVideo" type="text/javascript"  src="/js/HPlayer/js/CuSunHLSX2.min.js"></script>
+            ")});
 }
 </script>
 @stop
