@@ -20,7 +20,7 @@
 	</div>
 <div style="display: inline-block;float:right;height: 560px;background: #cdd7d8; width: 20%">
   <div class="form-group">
-    <form id="choose_form">
+    <form id="choose_form" name="choose_form">
       {{ csrf_field() }}
       <label>选择摄像头</label>
       <select class="form-control" name="camera_name">
@@ -41,21 +41,22 @@
     </form>
   </div>
 
-  <div>
-  <label>文件列表：</label>
- <!-- <div class="list-group pre-scrollable" style="width:100%; height:220px; overflow:auto" id="file_list">-->
-  <select class="form-control" id="file_list" size="5">
-  </div>
-  </div>
 
-<div>
+
+  <div>
           <form id="play_form">
           {{ csrf_field() }}
+          <div>
+        <label>文件列表：</label>
+ <!-- <div class="list-group pre-scrollable" style="width:100%; height:220px; overflow:auto" id="file_list">-->
+        <select class="form-control" id="file_list" size="5" name="file"></select>
+        </div>
+
           <button type="button" class="btn btn-default btn-sm" name="download_button" onclick="play()">
           <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>播放
           </button>
           </form>
-</div>
+  </div>
 
   <div>
           <form id="download_form">
@@ -123,10 +124,25 @@ function download()
 }
 function play()
 {
-  $("#play_form").empty();
+  var base_url = "rtmp://120.78.157.220";
+  var tag="";
+  if(choose_form.camera_name.value == "杭电南一门")
+  {
+    tag = "/vod1/";
+  }else if(choose_form.camera_name.value == "杭电南二门")
+  {
+    tag = "/vod2/";
+  }else if(choose_form.camera_name.value == "杭电南三门")
+  {
+    tag = "/vod3/";
+  }
+  
+  var remote_file = play_form.file.value;
+  vServer = base_url+tag+remote_file;
+  console.log(vServer);
   
 }
-console.log(vServer);
+//console.log(vServer);
 </script>
 
 @stop
