@@ -16,14 +16,20 @@ class PlayBackController extends Controller
             ]);
     }
 
+    public function query(Request $request)
+    {
+        $camera_name = $request->camera_name;
+        $date = $request->date;
+        $data = DB::connection('remote_mysql')->table($camera_name)->where('filename','like',$date.'%')->get()->toArray();
+
+        return json_encode($data);
+
+    }
+
     public function playback(Request $request)
     {
         //应该有几个请求参数？
         //$request->name  $request->ip_address 需要拼接文件名　数据库  id  文件名　　表名为目录名也为摄像头名
-        $tag = $request->tag ;
-        $url = $request->video_url ;
-        $base_path = 'http://120.78.157.220/';
-        return $base_path.$tag.$url;
     }
 
     public function download_file(Request $request)
