@@ -13,10 +13,14 @@
   </div>
 </div>
 <div style="background: #3c3e42;padding: 20px;margin-bottom: 80px;">
-	<div style="background:#fff;display: inline-block;height: 560px; width: 80%">
-	<div id="CuPlayer" >
-          <script>var vID = ''; var vWidth = '100%';var vHeight = '560px';var vFile = '/js/HPlayer/CuSunV2setLive.xml';var vPlayer= '/js/HPlayer/player.swf?v=2.5';var vPic = '/js/HPlayer/images/start.jpg';var vCssurl= '/js/HPlayer/images/mini.css';var vServer = 'aaaaaa';var vMp4url = '';</script><script class="CuPlayerVideo" data-mce-role="CuPlayerVideo" type="text/javascript"  src="/js/HPlayer/js/CuSunHLSX2.min.js"></script>
-  </div>
+	<div id="testchange" style="background:#fff;display: inline-block;height: 560px; width: 80%">
+	<!--<div id="CuPlayer" >
+          <script>var vID = ''; var vWidth = '100%';var vHeight = '560px';var vFile = '/js/HPlayer/CuSunV2setLive.xml';var vPlayer= '/js/HPlayer/player.swf?v=2.5';var vPic = '/js/HPlayer/images/start.jpg';var vCssurl= '/js/HPlayer/images/mini.css';var vServer = 'rtmp://120.78.157.220/vod1/';var vMp4url = '2019-02-11-19_12.flv';</script><script class="CuPlayerVideo" data-mce-role="CuPlayerVideo" type="text/javascript"  src="/js/HPlayer/js/CuSunHLSX2.min.js"></script>
+  </div>-->
+  <object id="CuPlayerVideo_video_object" width="100%" height="560px" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param name="movie" value="/js/HPlayer/player.swf?v=2.5"><param id ="aaaa" name="flashvars" value="JcScpFile=/js/HPlayer/CuSunV2setLive.xml&amp;JcScpVideoPath=2019-02-11-19_09.flv&amp;JcScpImg=/js/HPlayer/images/start.jpg&amp;JcScpServer=rtmp://120.78.157.220/vod1/"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="wmode" value="Transparent"><embed id="CuPlayerVideo_video_embed" src="/js/HPlayer/player.swf?v=2.5" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="Transparent" width="100%" height="560px" flashvars="JcScpFile=/js/HPlayer/CuSunV2setLive.xml&amp;JcScpVideoPath=2019-02-11-19_09.flv&amp;JcScpImg=/js/HPlayer/images/start.jpg&amp;JcScpServer=rtmp://120.78.157.220/vod1/"></object>
+<!--<video id="videojs-flvjs-player" class="video-js vjs-big-play-centered" controls style="width: 100%;height: 560px">
+  <source src="http://120.78.157.220/rtmp/video1/2019-02-11-19_09.flv" type="video/x-flv">
+</video>-->
 	</div>
 <div style="display: inline-block;float:right;height: 560px;background: #cdd7d8; width: 20%">
   <div class="form-group">
@@ -53,7 +57,7 @@
         </div>
 
           <button type="button" class="btn btn-default btn-sm" name="download_button" onclick="play()">
-          <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>播放
+          <span class="glyphicon glyphicon-off" aria-hidden="true"></span>在线播放
           </button>
           </form>
   </div>
@@ -88,7 +92,9 @@
 
   </div>
 </div>
+
 <script>
+  
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -138,11 +144,32 @@ function play()
   }
   
   var remote_file = play_form.file.value;
-  vServer = base_url+tag+remote_file;
-  console.log(vServer);
-  
+  var server_last = base_url+tag;
+  //var flashchar = "JcScpFile=/js/HPlayer/CuSunV2setLive.xml&JcScpVideoPath="+remote_file+"&JcScpImg=/js/HPlayer/images/start.jpg&JcScpServer="+server_last;
+  //$("#aaaa").attr("value",flashchar);
+  //$("#CuPlayerVideo_video_embed").attr("flashvars",flashchar);
+  //$("#CuPlayerVideo_video_object")[0].reset();
+  var char1 = document.getElementById("testchange");
+  char2 = "<object id='CuPlayerVideo_video_object' width='100%' height='560px' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'><param name='movie' value='/js/HPlayer/player.swf?v=2.5'><param id ='aaaa' name='flashvars' value='JcScpFile=/js/HPlayer/CuSunV2setLive.xml&amp;JcScpVideoPath="+remote_file+"&amp;JcScpImg=/js/HPlayer/images/start.jpg&amp;JcScpServer="+server_last+"'><param name='allowFullScreen' value='true'><param name='allowScriptAccess' value='always'><param name='wmode' value='Transparent'><embed id='CuPlayerVideo_video_embed' src='/js/HPlayer/player.swf?v=2.5' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' wmode='Transparent' width='100%' height='560px' flashvars='JcScpFile=/js/HPlayer/CuSunV2setLive.xml&amp;JcScpVideoPath="+remote_file+"&amp;JcScpImg=/js/HPlayer/images/start.jpg&amp;JcScpServer="+server_last+"'></object>";
+  char1.innerHTML = char2;
 }
 //console.log(vServer);
+/*    (function(window, videojs) {
+      // Setting the techOrder is necessary in 5.x
+      // In 6.x techs are added automatically
+      var player = window.player = videojs('videojs-flvjs-player', {
+      //  techOrder: ['html5', 'flvjs']
+      });
+    }(window, window.videojs));*/
+//videojs.options.flash.swf="/js/VideoJS.swf";
+/*(function(window, videojs) {
+      // Setting the techOrder is necessary in 5.x
+      // In 6.x techs are added automatically
+  var player = window.player = videojs('videojs-flvjs-player', {
+      //  techOrder: ['html5', 'flvjs']
+
+  });
+}(window, window.videojs));*/
 </script>
 
 @stop
